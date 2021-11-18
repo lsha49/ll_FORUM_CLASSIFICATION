@@ -1,4 +1,4 @@
-from Traditional_Machine_Learning.ml_classifiers import ml_clf
+from models.ml_classifiers import ml_clf
 
 config = dict()
 config['testSize'] = 0.2

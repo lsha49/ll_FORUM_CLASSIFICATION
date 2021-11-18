@@ -18,7 +18,7 @@ Data adapter:
 Data adapter is designed to transform raw input data into a proper format to be used in subsequent steps. The input data is expected to be in a csv file which should include a post text column and a label column. As an example, we have included Stanford forum post dataset used in this study to the toolkit repository. The data adaptor component is responsible for pre-processing the raw text contained in a post (e.g., stemming and removing non-alphabetic words). Then, the pre-processed posts are randomly split into training and testing set according to a pre-defined ratio (i.e., 80% for training and 20% for testing).
 
 Supported functionalities: 
-* Raw text preprocessed (e.g., stemming and removing non-alphabetic words): ml_classifiers.populateFinalText
+* Raw text preprocessed (e.g., stemming and removing non-alphabetic words): models.populateFinalText
 * Training/test set split: model_selection.train_test_split
 
 
@@ -27,10 +27,10 @@ Feature Composer:
 Feature Composer generates a vector representation to represent a post. This vector representation can be used as the input for subsequent classification models. Depending on the selected classification model (traditional ML models vs. DL models), this component either generates a vector consisting of a list of commonly-used features (for traditional ML models), or a embedding-based vector (for DL models). Most of the textual features used in this study (in Section II) are included in the feature composer except for Coh- metrix, LSA similarity and LIWC features as these three features requires external software to generate. However, once generated the features can be easily integrated by simply append the additional feature set to the output feature vector produced by feature composer. As an example,LIWC software9)havetheoptiontoproduce a csv file containing feature set per post, a user may generate LIWC feature using their software and add those features to the output file of this step. For DL models, The embedding vector will be generated using bert-as-a-service, the output will be in 768 dimensional BERT embedding. To enable an efficient evaluation, the generated vectors are stored locally and can be used as input for different models.
 
 Supported functionalities: 
-* TFIDF: util.feature_tfidf
-* NGRAM: util.feature_ngram
-* READABILITY: util.feature_readability
-* TopkFeatureTEST: util.exam_selectKbest
+* TFIDF: models.util.feature_tfidf
+* NGRAM: models.util.feature_ngram
+* READABILITY: models.util.feature_readability
+* TopkFeatureTEST: models.util.exam_selectKbest
 
 Performance Evaluator: 
 -------------------------------------------------------------------------------------------------------
