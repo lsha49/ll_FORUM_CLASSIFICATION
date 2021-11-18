@@ -2,8 +2,6 @@ Education forum post classification
 -------------------------------------------------------------------------
 The purpose of this repository is to explore text classification methods in education forum post classification.
 
-We also include here the Stanford forum post dataset: stanfordMOOCForumPostsSet.tar.gz. This dataset was originally created and labelled by the Stanford financed by the National Science Foundation to support educational research. The dataset can be used for research purpose.
-
 #### Introduction
 Forum post classification is a long-standing task in the field of educational research. To help ease the effort and aid future research, here we provide commonly used ML (Machine Learning) and DL (Deep Learning) model implemenatation code. (note: DL code is modified from repo in here: https://github.com/zackhy/TextClassification, while text preprocessing partially used code by https://medium.com/@bedigunjit/)
 
