@@ -3,17 +3,7 @@ Education forum post classification
 The purpose of this repository is to explore text classification methods in education forum post classification.
 
 #### Introduction
-Forum post classification is a long-standing task in the field of educational research. To help ease the effort and aid future research, here we provide commonly used ML (Machine Learning) and DL (Deep Learning) model implemenatation code. (note: DL code is modified from repo in here: https://github.com/zackhy/TextClassification, while text preprocessing partially used code by https://medium.com/@bedigunjit/)
-
-Models:
--------------------------------------------------------------------------
-1) Naive bayes: ml_classifiers.nb_clf
-2) Logistic regression: ml_classifiers.lr_clf
-3) Random forest: ml_classifiers.rf_clf
-4) Support vector machine: ml_classifiers.svm_clf
-5) CLSTM: clstm_classifier
-6) BLSTM: rnn_classifier
-
+This python toolkit is developed to address the challenges of education Forum post classification. To help ease the effort and aid future research, here we implemenatation code of such task.
 
 ## Requirements  
 -------------------------------------------------------------------------------------------------------
@@ -22,10 +12,12 @@ Models:
 * Sklearn > 0.19.0  
 
 
-
 Data adapter: 
 -------------------------------------------------------------------------------------------------------
 Data adapter is designed to transform raw input data into a proper format to be used in subsequent steps. The input data is expected to be in a csv file which should include a post text column and a label column. As an example, we have included Stanford forum post dataset used in this study to the toolkit repository. The data adaptor component is responsible for pre-processing the raw text contained in a post (e.g., stemming and removing non-alphabetic words). Then, the pre-processed posts are randomly split into training and testing set according to a pre-defined ratio (i.e., 80% for training and 20% for testing).
+
+Raw corpus is first preprocessed using: ml_classifiers.populateFinalText
+After preprocessin, the training/test set is split using: model_selection.train_test_split
 
 
 Feature Composer: 
@@ -41,6 +33,17 @@ Performance Evaluator is responsible for calculat- ing the classification perfor
 Model Selector: 
 -------------------------------------------------------------------------------------------------------
 Model Selector handles the selection of a model. That is, users of this toolkit can choose from any of the four traditional ML models and the five DL models used in this study. We also note that a new model can be easily added and testified under the current framework. After a model is selected, the users can either directly adopt the model parameters derived from our evaluation or training the model from scratch, e.g., using grid search to fine- tune a traditional ML model or coupling BERT with a DL model for co-training.
+
+
+Supported Models:
+-------------------------------------------------------------------------
+1) Naive bayes: ml_classifiers.nb_clf
+2) Logistic regression: ml_classifiers.lr_clf
+3) Random forest: ml_classifiers.rf_clf
+4) Support vector machine: ml_classifiers.svm_clf
+5) CLSTM: clstm_classifier
+6) BLSTM: rnn_classifier
+
 
 Usage: 
 -------------------------------------------------------------------------------------------------------
