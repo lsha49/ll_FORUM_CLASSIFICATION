@@ -12,47 +12,39 @@ This python toolkit is developed to address the challenges of education Forum po
 * Sklearn > 0.19.0  
 
 
+
 Data adapter: 
 -------------------------------------------------------------------------------------------------------
 Data adapter is designed to transform raw input data into a proper format to be used in subsequent steps. The input data is expected to be in a csv file which should include a post text column and a label column. As an example, we have included Stanford forum post dataset used in this study to the toolkit repository. The data adaptor component is responsible for pre-processing the raw text contained in a post (e.g., stemming and removing non-alphabetic words). Then, the pre-processed posts are randomly split into training and testing set according to a pre-defined ratio (i.e., 80% for training and 20% for testing).
 
-Raw corpus is first preprocessed using: ml_classifiers.populateFinalText
-After preprocessin, the training/test set is split using: model_selection.train_test_split
+Supported functionalities: 
+* Raw text preprocessed (e.g., stemming and removing non-alphabetic words): ml_classifiers.populateFinalText
+* Training/test set split: model_selection.train_test_split
 
 
-Feature Composer: 
+Feature Composer:  
 -------------------------------------------------------------------------------------------------------
 Feature Composer generates a vector representation to represent a post. This vector representation can be used as the input for subsequent classification models. Depending on the selected classification model (traditional ML models vs. DL models), this component either generates a vector consisting of a list of commonly-used features (for traditional ML models), or a embedding-based vector (for DL models). Most of the textual features used in this study (in Section II) are included in the feature composer except for Coh- metrix, LSA similarity and LIWC features as these three features requires external software to generate. However, once generated the features can be easily integrated by simply append the additional feature set to the output feature vector produced by feature composer. As an example,LIWC software9)havetheoptiontoproduce a csv file containing feature set per post, a user may generate LIWC feature using their software and add those features to the output file of this step. For DL models, The embedding vector will be generated using bert-as-a-service, the output will be in 768 dimensional BERT embedding. To enable an efficient evaluation, the generated vectors are stored locally and can be used as input for different models.
 
+Supported functionalities: 
+* TFIDF: util.feature_tfidf
+* NGRAM: util.feature_ngram
+* READABILITY: util.feature_readability
+* TopkFeatureTEST: util.exam_selectKbest
 
 Performance Evaluator: 
 -------------------------------------------------------------------------------------------------------
 Performance Evaluator is responsible for calculat- ing the classification performance of a model in terms of the following four metrics: Accuracy, Cohen’s κ, AUC, and F1 score.
 
+Supported functionalities: 
+* metrics: sklearn.metrics.accuracy_score
+* metrics: sklearn.metrics.cohen_kappa_score
+* metrics: sklearn.metrics.roc_auc_score
+* metrics: sklearn.metrics.f1_score
 
 Model Selector: 
 -------------------------------------------------------------------------------------------------------
 Model Selector handles the selection of a model. That is, users of this toolkit can choose from any of the four traditional ML models and the five DL models used in this study. We also note that a new model can be easily added and testified under the current framework. After a model is selected, the users can either directly adopt the model parameters derived from our evaluation or training the model from scratch, e.g., using grid search to fine- tune a traditional ML model or coupling BERT with a DL model for co-training.
-
-
-Supported Models:
--------------------------------------------------------------------------
-1) Naive bayes: ml_classifiers.nb_clf
-2) Logistic regression: ml_classifiers.lr_clf
-3) Random forest: ml_classifiers.rf_clf
-4) Support vector machine: ml_classifiers.svm_clf
-5) CLSTM: clstm_classifier
-6) BLSTM: rnn_classifier
-
-
-Usage: 
--------------------------------------------------------------------------------------------------------
-ML code is contained in Traditional_Machine_Learning.ml_classifiers
-
-create configuration: 
-config = dict()
-config['testSize'] = 0.2
-config['file'] = 'xxx.csv'
 
 * initialise base classifier:
 classifier = ml_clf(config)
@@ -91,4 +83,15 @@ We used a service called "Bert-as-a-service" (https://github.com/hanxiao/bert-as
 The embedding is then used as input for DL models
 
 We refer this repo: https://github.com/zackhy/TextClassification, where DL code was modified from. 
+
+
+
+Supported Models:
+-------------------------------------------------------------------------
+1) Naive bayes: ml_classifiers.nb_clf
+2) Logistic regression: ml_classifiers.lr_clf
+3) Random forest: ml_classifiers.rf_clf
+4) Support vector machine: ml_classifiers.svm_clf
+5) CLSTM: clstm_classifier
+6) BLSTM: rnn_classifier
 
