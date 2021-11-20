@@ -17,9 +17,15 @@ Data adapter:
 -------------------------------------------------------------------------------------------------------
 Data adapter is designed to transform raw input data into a proper format to be used in subsequent steps. The input data is expected to be in a csv file which should include a post text column and a label column. As an example, we have included Stanford forum post dataset used in this study to the toolkit repository. The data adaptor component is responsible for pre-processing the raw text contained in a post (e.g., stemming and removing non-alphabetic words). Then, the pre-processed posts are randomly split into training and testing set according to a pre-defined ratio (i.e., 80% for training and 20% for testing).
 
+e.g., 
+* cofeter.adapt()
+
+
 Supported functionalities: 
-* Raw text preprocessed (e.g., stemming and removing non-alphabetic words): models.populateFinalText
-* Training/test set split: model_selection.train_test_split
+* tokenize: tokenize.word_tokenize()
+* stemming (e.g., stemming and removing non-alphabetic words): defaultdict(lambda : wn.NOUN)
+* lemmatize: WordNetLemmatizer().lemmatize()
+* Training/test set split: CofetEntry.preTrain()
 
 
 Feature Composer:  
