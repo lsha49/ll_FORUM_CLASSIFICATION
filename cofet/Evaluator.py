@@ -31,29 +31,17 @@ import math
 import textstat
 from sklearn.feature_extraction.text import CountVectorizer
 
-class util(object):
-    def feature_readability(self, data):
-        return textstat.automated_readability_index(data)
+class Evaluator(object):
 
-    def feature_ngram(self, data, numOfGramFeatures):
-        ngram_vectorizer_uni = CountVectorizer(max_features=numOfGramFeatures, ngram_range=(1,1)) # unigram 
-        return ngram_vectorizer_uni.fit_transform(data)
-    
-    def feature_tfidf(self, data, numOfGramFeatures):
-        Tfidf_vect = TfidfVectorizer(max_features=numOfGramFeatures, ngram_range=(1,1))
-        Tfidf_vect.fit(data)
-        return Tfidf_vect.transform(data)
+    def evl(self):
+        predicted = self.predicted 
+        predicted_prob = self.predicted_prob #for multi class AUC
+        print('model result of ', self.config['clf'])
+        print("Accuracy Score -> ",accuracy_score(predicted, self.Test_Y))
+        print("Kappa Score -> ",cohen_kappa_score(predicted, self.Test_Y))
+        print("ROC AUC Score -> ",roc_auc_score(self.Test_Y, predicted))
+        print("F1 Score -> ",f1_score(predicted, self.Test_Y))
 
-    def exam_selectKbest(self, data, X, Y, numOfGramFeatures):
-        kval = 0
-        if kval > 0:
-            selector = SelectKBest(chi2, k=kval)
-            selector.fit_transform(X, Y)
-            alabels = data.columns.tolist()
-            slabels = selector.get_support()
-            print('Selected K features: ==============')
-            for aindex in range(len(alabels)):
-                if slabels[aindex] == True:
-                    print(alabels[aindex], ',' ,end = '')
-            print('\n')
-            
+        # for multi class
+        # print("ROC AUC Score -> ", roc_auc_score(self.Test_Y, predicted_prob, average='weighted', multi_class='ovo'))
+        # print("F1 Score -> ",f1_score(predicted, self.Test_Y, average='weighted'))
