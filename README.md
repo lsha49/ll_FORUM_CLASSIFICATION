@@ -44,11 +44,11 @@ Supported functionalities:
 
 |               Function                |                                   Example                                                 |
 | :-----------------------------------: | :---------------------------------------------------------------------------------------: |
-|            tokenize                   |                              ```python tokenize.word_tokenize()    ```                                |
-|            stemming                   |                               defaultdict(lambda : wn.NOUN)                               |
-|     removing non-alphabetic words     |                               defaultdict(lambda : wn.NOUN)                               |
-|           lemmatize                   |                          WordNetLemmatizer().lemmatize()                                  |
-|      Training/test set split          |                               CofetEntry.preTrain()                                       |
+|            tokenize                   |                ```python tokenize.word_tokenize()    ```                                |
+|            stemming                   |                     ```python          defaultdict(lambda : wn.NOUN)    ```            |
+|     removing non-alphabetic words     |                    ```python           defaultdict(lambda : wn.NOUN)   ```                |
+|           lemmatize                   |                   ```python       WordNetLemmatizer().lemmatize()      ```              |
+|      Training/test set split          |                    ```python           CofetEntry.preTrain()           ```        |
 
 
 
