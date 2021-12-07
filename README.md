@@ -122,17 +122,6 @@ The embedding is then used as input for DL models
 
 We refer this repo: [TextClassification](https://github.com/zackhy/TextClassification), where DL code was modified from. 
 
-
-## Performance Evaluator: 
-Performance Evaluator is responsible for calculat- ing the classification performance of a model in terms of the following four metrics: Accuracy, Cohen’s κ, AUC, and F1 score.
-
-Supported functionalities: 
-* metrics: sklearn.metrics.accuracy_score
-* metrics: sklearn.metrics.cohen_kappa_score
-* metrics: sklearn.metrics.roc_auc_score
-* metrics: sklearn.metrics.f1_score
-
-
 |               Function                |                                   Example                                                 |
 | :-----------------------------------: | :---------------------------------------------------------------------------------------: |
 |            Naive bayes                   |                ```python ml_classifiers.nb_clf    ```                                |
@@ -141,4 +130,16 @@ Supported functionalities:
 |           Support vector machine                   |                   ```python    ml_classifiers.svm_clf     ```              |
 |           CLSTM                  |                   ```python      clstm_classifier    ```              |
 |          BLSTM                   |                   ```python      rnn_classifier     ```              |
+
+## Performance Evaluator: 
+Performance Evaluator is responsible for calculat- ing the classification performance of a model in terms of the following four metrics: Accuracy, Cohen’s κ, AUC, and F1 score.
+
+
+|               Function                |                                   Example                                                 |
+| :-----------------------------------: | :---------------------------------------------------------------------------------------: |
+|            Accuracy                   |                ```python sklearn.metrics.accuracy_score    ```                                |
+|           cohen's Kappa                |                     ```python      sklearn.metrics.cohen_kappa_score    ```            |
+|     AUC     |                    ```python          sklearn.metrics.roc_auc_score ```                |
+|           F1                   |                   ```python    sklearn.metrics.f1_score     ```              |
+
 
