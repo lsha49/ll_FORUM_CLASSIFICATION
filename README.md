@@ -42,6 +42,15 @@ Supported functionalities:
 * lemmatize: WordNetLemmatizer().lemmatize()
 * Training/test set split: CofetEntry.preTrain()
 
+|               Function                |                                   Example                                                 |
+| :-----------------------------------: | :---------------------------------------------------------------------------------------: |
+|            tokenize                   |                               tokenize.word_tokenize()                                    |
+|            stemming                   |                               defaultdict(lambda : wn.NOUN)                               |
+|     removing non-alphabetic words     |                               defaultdict(lambda : wn.NOUN)                               |
+|           lemmatize                   |                          WordNetLemmatizer().lemmatize()                                  |
+|      Training/test set split          |                               CofetEntry.preTrain()                                       |
+
+
 
 ## Feature Composer:  
 Feature Composer generates a vector representation to represent a post. This vector representation can be used as the input for subsequent classification models. Depending on the selected classification model (traditional ML models vs. DL models), this component either generates a vector consisting of a list of commonly-used features (for traditional ML models), or a embedding-based vector (for DL models). Most of the textual features used in this study (in Section II) are included in the feature composer except for Coh- metrix, LSA similarity and LIWC features as these three features requires external software to generate. However, once generated the features can be easily integrated by simply append the additional feature set to the output feature vector produced by feature composer. As an example,LIWC software9)havetheoptiontoproduce a csv file containing feature set per post, a user may generate LIWC feature using their software and add those features to the output file of this step. For DL models, The embedding vector will be generated using bert-as-a-service, the output will be in 768 dimensional BERT embedding. To enable an efficient evaluation, the generated vectors are stored locally and can be used as input for different models.
