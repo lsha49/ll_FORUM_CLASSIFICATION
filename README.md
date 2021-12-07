@@ -12,7 +12,7 @@
 * model implementation and training 
 * result evaluation and analysis
 
-The toolkit is divided into four components: 
+The toolkit is divided into four components: Data adapter, Feature Composer, Model Selector and Performance Evaluator
 
 Data adapter: 
 -------------------------------------------------------------------------------------------------------
@@ -38,16 +38,6 @@ Supported functionalities:
 * NGRAM: models.util.feature_ngram
 * READABILITY: models.util.feature_readability
 * TopkFeatureTEST: models.util.exam_selectKbest
-
-Performance Evaluator: 
--------------------------------------------------------------------------------------------------------
-Performance Evaluator is responsible for calculat- ing the classification performance of a model in terms of the following four metrics: Accuracy, Cohen’s κ, AUC, and F1 score.
-
-Supported functionalities: 
-* metrics: sklearn.metrics.accuracy_score
-* metrics: sklearn.metrics.cohen_kappa_score
-* metrics: sklearn.metrics.roc_auc_score
-* metrics: sklearn.metrics.f1_score
 
 Model Selector: 
 -------------------------------------------------------------------------------------------------------
@@ -92,6 +82,15 @@ The embedding is then used as input for DL models
 We refer this repo: https://github.com/zackhy/TextClassification, where DL code was modified from. 
 
 
+Performance Evaluator: 
+-------------------------------------------------------------------------------------------------------
+Performance Evaluator is responsible for calculat- ing the classification performance of a model in terms of the following four metrics: Accuracy, Cohen’s κ, AUC, and F1 score.
+
+Supported functionalities: 
+* metrics: sklearn.metrics.accuracy_score
+* metrics: sklearn.metrics.cohen_kappa_score
+* metrics: sklearn.metrics.roc_auc_score
+* metrics: sklearn.metrics.f1_score
 
 Supported Models:
 -------------------------------------------------------------------------
