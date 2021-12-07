@@ -1,17 +1,20 @@
-Education forum post classification
+CAFET toolkit
 -------------------------------------------------------------------------
-The purpose of this repository is to explore text classification methods in education forum post classification.
-
-#### Introduction
-This python toolkit is developed to address the challenges of education Forum post classification. To help ease the effort and aid future research, here we implemenatation code of such task.
-
 ## Requirements  
--------------------------------------------------------------------------------------------------------
 * Python 3.x  
 * Tensorflow > 1.5
 * Sklearn > 0.19.0  
 
+## What is it
+* This python toolkit is developed to address the challenges of education Forum post classification. To help ease the effort and aid future research, here we implemenatation code of such task.
 
+
+## The toolkit provide following main functionalities that assist the classifier development process: 
+* text pre-processing 
+* model implementation and training 
+* result evaluation and analysis
+
+The toolkit is divided into four components: 
 
 Data adapter: 
 -------------------------------------------------------------------------------------------------------
