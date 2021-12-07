@@ -1,15 +1,15 @@
 CAFET toolkit
--------------------------------------------------------------------------
+
 ## Requirements  
 * Python 3.x  
 * Tensorflow > 1.5
 * Sklearn > 0.19.0  
 
-## What is it
+## Purpose
 * This python toolkit is developed to address the challenges of education Forum post classification. To help ease the effort and aid future research, here we implemenatation code of such task.
 
 
-## The toolkit provide following main functionalities that assist the classifier development process: 
+## Main functionalities
 * text pre-processing 
 * model implementation and training 
 * result evaluation and analysis
