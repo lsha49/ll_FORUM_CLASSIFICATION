@@ -36,11 +36,11 @@ e.g.,
 cofeter.adapt()
 ```
 
-Supported functionalities: 
+<!-- Supported functionalities: 
 * tokenize: tokenize.word_tokenize()
 * stemming (e.g., stemming and removing non-alphabetic words): defaultdict(lambda : wn.NOUN)
 * lemmatize: WordNetLemmatizer().lemmatize()
-* Training/test set split: CofetEntry.preTrain()
+* Training/test set split: CofetEntry.preTrain() -->
 
 |               Function                |                                   Example                                                 |
 | :-----------------------------------: | :---------------------------------------------------------------------------------------: |
@@ -55,11 +55,14 @@ Supported functionalities:
 ## Feature Composer:  
 Feature Composer generates a vector representation to represent a post. This vector representation can be used as the input for subsequent classification models. Depending on the selected classification model (traditional ML models vs. DL models), this component either generates a vector consisting of a list of commonly-used features (for traditional ML models), or a embedding-based vector (for DL models). Most of the textual features used in this study (in Section II) are included in the feature composer except for Coh- metrix, LSA similarity and LIWC features as these three features requires external software to generate. However, once generated the features can be easily integrated by simply append the additional feature set to the output feature vector produced by feature composer. As an example,LIWC software9)havetheoptiontoproduce a csv file containing feature set per post, a user may generate LIWC feature using their software and add those features to the output file of this step. For DL models, The embedding vector will be generated using bert-as-a-service, the output will be in 768 dimensional BERT embedding. To enable an efficient evaluation, the generated vectors are stored locally and can be used as input for different models.
 
-Supported functionalities: 
-* TFIDF: models.util.feature_tfidf
-* NGRAM: models.util.feature_ngram
-* READABILITY: models.util.feature_readability
-* TopkFeatureTEST: models.util.exam_selectKbest
+
+|               Function                |                                   Example                                                 |
+| :-----------------------------------: | :---------------------------------------------------------------------------------------: |
+|            TFIDF                   |                ```python models.util.feature_tfidf    ```                                |
+|            NGRAM                   |                     ```python         models.util.feature_ngram    ```            |
+|     READABILITY     |                    ```python           models.util.feature_readability ```                |
+|           TopkFeatureTEST                   |                   ```python      models.util.exam_selectKbest     ```              |
+
 
 ## Model Selector: 
 Model Selector handles the selection of a model. That is, users of this toolkit can choose from any of the four traditional ML models and the five DL models used in this study. We also note that a new model can be easily added and testified under the current framework. After a model is selected, the users can either directly adopt the model parameters derived from our evaluation or training the model from scratch, e.g., using grid search to fine- tune a traditional ML model or coupling BERT with a DL model for co-training.
@@ -130,11 +133,12 @@ Supported functionalities:
 * metrics: sklearn.metrics.f1_score
 
 
-## Supported Models:
-1) Naive bayes: ml_classifiers.nb_clf
-2) Logistic regression: ml_classifiers.lr_clf
-3) Random forest: ml_classifiers.rf_clf
-4) Support vector machine: ml_classifiers.svm_clf
-5) CLSTM: clstm_classifier
-6) BLSTM: rnn_classifier
+|               Function                |                                   Example                                                 |
+| :-----------------------------------: | :---------------------------------------------------------------------------------------: |
+|            Naive bayes                   |                ```python ml_classifiers.nb_clf    ```                                |
+|            Logistic regression                   |                     ```python      ml_classifiers.lr_clf    ```            |
+|     Random forest     |                    ```python          ml_classifiers.rf_clf ```                |
+|           Support vector machine                   |                   ```python    ml_classifiers.svm_clf     ```              |
+|           CLSTM                  |                   ```python      clstm_classifier    ```              |
+|          BLSTM                   |                   ```python      rnn_classifier     ```              |
 
