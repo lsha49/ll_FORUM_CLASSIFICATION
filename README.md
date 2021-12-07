@@ -44,7 +44,7 @@ Supported functionalities:
 
 |               Function                |                                   Example                                                 |
 | :-----------------------------------: | :---------------------------------------------------------------------------------------: |
-|            tokenize                   |                               tokenize.word_tokenize()                                    |
+|            tokenize                   |                              ```python tokenize.word_tokenize()    ```                                |
 |            stemming                   |                               defaultdict(lambda : wn.NOUN)                               |
 |     removing non-alphabetic words     |                               defaultdict(lambda : wn.NOUN)                               |
 |           lemmatize                   |                          WordNetLemmatizer().lemmatize()                                  |
