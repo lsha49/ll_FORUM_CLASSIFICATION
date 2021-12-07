@@ -19,8 +19,9 @@ Data adapter:
 Data adapter is designed to transform raw input data into a proper format to be used in subsequent steps. The input data is expected to be in a csv file which should include a post text column and a label column. As an example, we have included Stanford forum post dataset used in this study to the toolkit repository. The data adaptor component is responsible for pre-processing the raw text contained in a post (e.g., stemming and removing non-alphabetic words). Then, the pre-processed posts are randomly split into training and testing set according to a pre-defined ratio (i.e., 80% for training and 20% for testing).
 
 e.g., 
-* cofeter.adapt()
-
+```python
+cofeter.adapt()
+```
 
 Supported functionalities: 
 * tokenize: tokenize.word_tokenize()
@@ -44,42 +45,59 @@ Model Selector:
 Model Selector handles the selection of a model. That is, users of this toolkit can choose from any of the four traditional ML models and the five DL models used in this study. We also note that a new model can be easily added and testified under the current framework. After a model is selected, the users can either directly adopt the model parameters derived from our evaluation or training the model from scratch, e.g., using grid search to fine- tune a traditional ML model or coupling BERT with a DL model for co-training.
 
 * initialise base classifier:
+```python
 classifier = ml_clf(config)
+```
 
 * create a Naive bayes classifier: 
+```python
 classifier.nb_clf()
+```
 
 * create a SVM classifier:
+```python
 classifier.svm_clf()
+```
 
 * create a Logistic regression classifier:
+```python
 classifier.lr_clf()
+```
 
 * create a Random forest classifier:
+```python
 classifier.rf_clf()
+```
 
 * to perform a simple grid search with pre-defined parameters:
+
+```python
 grid = GridSearchCV(YOUR_MODEL,YOUR_SEARCH_PARAMS,refit=True,verbose=2)
 grid.fit(self.Train_X,self.Train_Y)
 print(grid.best_estimator_)
+```
 
 * to run a model with hyperparamter, replace model function and add parameter: 
 e.g., 
 replace: 
+```python
 rfc=RandomForestClassifier()
+```
 
 with: 
+```python
 rfc=RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
   max_depth=None, max_features=0.5, max_leaf_nodes=None,
   min_impurity_split=1e-07, min_samples_leaf=1,
   min_samples_split=4, min_weight_fraction_leaf=0.0,
   n_estimators=250, n_jobs=1, oob_score=False, random_state=None,
   verbose=0, warm_start=False)
+```
 
-We used a service called "Bert-as-a-service" (https://github.com/hanxiao/bert-as-service) to generate BERT embeddings of the forum post. 
+We used a service called [Bert-as-a-service](https://github.com/hanxiao/bert-as-service) to generate BERT embeddings of the forum post. 
 The embedding is then used as input for DL models
 
-We refer this repo: https://github.com/zackhy/TextClassification, where DL code was modified from. 
+We refer this repo: [TextClassification](https://github.com/zackhy/TextClassification), where DL code was modified from. 
 
 
 Performance Evaluator: 
@@ -91,6 +109,7 @@ Supported functionalities:
 * metrics: sklearn.metrics.cohen_kappa_score
 * metrics: sklearn.metrics.roc_auc_score
 * metrics: sklearn.metrics.f1_score
+
 
 Supported Models:
 -------------------------------------------------------------------------
