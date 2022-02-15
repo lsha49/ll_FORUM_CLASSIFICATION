@@ -4,7 +4,6 @@
 * Tensorflow > 1.5
 * Sklearn > 0.19.0  
 
-## Installation
 Download with `git clone` or equivalent.
 
 ```bash
