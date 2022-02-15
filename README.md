@@ -1,14 +1,11 @@
 # CoFET
-
-* Python 3.x  
-* Tensorflow > 1.5
-* Sklearn > 0.19.0  
-
 Download with `git clone` or equivalent.
-
 ```bash
 git clone @repo
 ```
+* Python 3.x  
+* Tensorflow > 1.5
+* Sklearn > 0.19.0
 
 ## Purpose of CoFET 
 An utility python library toolkit to perform education Forum post classification. Main functionalities: text pre-processing, model implementation and training, result evaluation and analysis. The toolkit is divided into four components: Data adapter, Feature Composer, Model Selector and Performance Evaluator
