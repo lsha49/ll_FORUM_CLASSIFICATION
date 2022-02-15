@@ -1,21 +1,5 @@
 # CoFET
 
-## Requirements  
-* Python 3.x  
-* Tensorflow > 1.5
-* Sklearn > 0.19.0  
-
-## Purpose of CoFET 
-* An utility python library toolkit to perform education Forum post classification. 
-
-
-## Main functionalities
-* text pre-processing 
-* model implementation and training 
-* result evaluation and analysis
-
-
-
 ## Installation
 
 Download with `git clone` or equivalent.
@@ -24,9 +8,13 @@ Download with `git clone` or equivalent.
 git clone @repo
 ```
 
+## Requirements  
+* Python 3.x  
+* Tensorflow > 1.5
+* Sklearn > 0.19.0  
 
-
-The toolkit is divided into four components: Data adapter, Feature Composer, Model Selector and Performance Evaluator
+## Purpose of CoFET 
+* An utility python library toolkit to perform education Forum post classification. Main functionalities: text pre-processing, model implementation and training, result evaluation and analysis. The toolkit is divided into four components: Data adapter, Feature Composer, Model Selector and Performance Evaluator
 
 ## Data adapter: 
 Data adapter is designed to transform raw input data into a proper format to be used in subsequent steps. The input data is expected to be in a csv file which should include a post text column and a label column. As an example, we have included Stanford forum post dataset used in this study to the toolkit repository. The data adaptor component is responsible for pre-processing the raw text contained in a post (e.g., stemming and removing non-alphabetic words). Then, the pre-processed posts are randomly split into training and testing set according to a pre-defined ratio (i.e., 80% for training and 20% for testing).
