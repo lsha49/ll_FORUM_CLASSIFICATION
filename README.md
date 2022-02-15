@@ -1,7 +1,5 @@
 # CoFET
 
-
-## Requirements  
 * Python 3.x  
 * Tensorflow > 1.5
 * Sklearn > 0.19.0  
