@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import time
-import gensim
 import logging
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import pos_tag
@@ -18,7 +17,6 @@ from collections.abc import Iterable
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
-from gensim.models import Word2Vec 
 from pprint import pprint
 from sklearn.metrics import cohen_kappa_score
 from sklearn.metrics import roc_auc_score

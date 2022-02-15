@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import time
-import gensim
 import logging
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import pos_tag
@@ -18,7 +17,6 @@ from collections.abc import Iterable
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
-from gensim.models import Word2Vec 
 from pprint import pprint
 from sklearn.metrics import cohen_kappa_score
 from sklearn.metrics import roc_auc_score
@@ -46,8 +44,8 @@ class ModelSelector(object):
         # exit()
         grid = GridSearchCV(SVM,parameters,refit=True,verbose=2)
         grid.fit(self.Train_X,self.Train_Y)
-        print(grid.best_estimator_)
-        exit()
+        # print(grid.best_estimator_)
+        # exit()
 
         # A sample GridSearched model: 
         # SVM = svm.SVC(C=1000, cache_size=200, class_weight=None, coef0=0.0,

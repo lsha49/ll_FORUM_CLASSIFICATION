@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import time
-import gensim
 import logging
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import pos_tag
@@ -17,7 +16,6 @@ from collections.abc import Iterable
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
-from gensim.models import Word2Vec 
 from pprint import pprint
 from sklearn.metrics import cohen_kappa_score
 from sklearn.metrics import roc_auc_score
@@ -30,9 +28,9 @@ from sklearn import preprocessing
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import GridSearchCV
-from DataTransformer import DataTransformer
-from ModelSelector import ModelSelector
-from Evaluator import Evaluator
+from cofet.DataTransformer import DataTransformer
+from cofet.ModelSelector import ModelSelector
+from cofet.Evaluator import Evaluator
 
 class CofetEntry(object):
     def __init__(self, config):
@@ -43,7 +41,7 @@ class CofetEntry(object):
 
     def adapt(self):
         # preprocessing texts: stopwords, lemmatize. 
-        self.Corpus = DataTransformer.populateFinalText(self.Corpus)
+        self.Corpus = DataTransformer.populateFinalText(self, self.Corpus)
 
     def compose(self):
         if self.config['useTfidf'] == True: 
@@ -58,21 +56,21 @@ class CofetEntry(object):
 
 
     def preTrain(self):
-        Y = self.Corpus[self.confg['labelName']]
+        Y = self.Corpus[self.config['labelName']]
 
         # features
         self.Corpus.drop('Text', inplace=True, axis=1)
-        self.Corpus.drop(self.confg['labelName'], inplace=True, axis=1)
+        self.Corpus.drop(self.config['labelName'], inplace=True, axis=1)
         
         X = self.Corpus.replace(np.nan, 0)
         X = preprocessing.MinMaxScaler().fit_transform(X)
 
-        self.Train_X, self.Test_X, self.Train_Y, self.Test_Y = model_selection.train_test_split(X, Y, test_size=self.confg['testSize'], random_state=11, stratify=Y)
+        self.Train_X, self.Test_X, self.Train_Y, self.Test_Y = model_selection.train_test_split(X, Y, test_size=self.config['testSize'], random_state=11, stratify=Y)
         self.Train_Y = self.Train_Y.astype(int)
         self.Test_Y = self.Test_Y.astype(int)
 
     def clf(self):
-        self.preTrain(self)
+        self.preTrain()
         if self.config['clf'] == 'nb_clf': 
             ModelSelector.nb_clf(self)
         if self.config['clf'] == 'svm_clf': 
