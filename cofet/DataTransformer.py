@@ -30,6 +30,9 @@ import textstat
 from sklearn.feature_extraction.text import CountVectorizer
 
 class DataTransformer(object):
+    """
+    TF-IDF feature extractor
+    """
     def populateTfIdf(self, Corpus):
         numOfGramFeatures = self.config['numOfGramFeatures']
         Tfidf_vect = TfidfVectorizer(max_features=numOfGramFeatures, ngram_range=(2,2))
@@ -51,7 +54,9 @@ class DataTransformer(object):
         # Corpus.drop('text_final', inplace=True, axis=1)
         return Corpus
 
-
+    """
+    N-gram feature extractor
+    """
     def populateGram(self, Corpus, gramN):
         numOfGramFeatures = self.config['numOfGramFeatures']
         ngram_vectorizer = CountVectorizer(max_features=100, ngram_range=(gramN,gramN))
@@ -63,6 +68,9 @@ class DataTransformer(object):
             keyedIndex = keyedIndex + 1
         return Corpus
 
+    """
+    text pre-processing
+    """
     def populateFinalText(self, Corpus): 
         Corpus['Text'].dropna(inplace=True)
         Corpus['Text'] = [ entry.lower() if isinstance(entry, str) else entry for entry in Corpus['Text'] ]
@@ -84,6 +92,9 @@ class DataTransformer(object):
             Corpus.loc[index,'text_final'] = str(Final_words)
         return Corpus
     
+    """
+    readability textual feature
+    """
     def feature_readability(self, data):
         return textstat.automated_readability_index(data)
 

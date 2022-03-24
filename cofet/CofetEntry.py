@@ -33,16 +33,31 @@ from cofet.ModelSelector import ModelSelector
 from cofet.Evaluator import Evaluator
 
 class CofetEntry(object):
+    """Entry point for Cafet package
+    Parameters
+    ----------
+    config: array-like
+    Returns
+    -------
+    """
     def __init__(self, config):
         self.config = config
 
+    """
+    Loading file into corpus for processing
+    """
     def load(self):
         self.Corpus = pd.read_csv(self.config['file'], encoding='latin-1') # CSV file containing posts
 
+    """
+    add corpus to dataTransformer, preprocessing texts: stopwords, lemmatize. 
+    """
     def adapt(self):
-        # preprocessing texts: stopwords, lemmatize. 
         self.Corpus = DataTransformer.populateFinalText(self, self.Corpus)
-
+    
+    """
+    extract basic textual features from pre-processed text
+    """
     def compose(self):
         if self.config['useTfidf'] == True: 
             self.Corpus = DataTransformer.populateTfIdf(self.Corpus)
@@ -54,7 +69,9 @@ class CofetEntry(object):
         # remove text field after textual feature computation
         self.Corpus.drop('text_final', inplace=True, axis=1)
 
-
+    """
+    data spliter and other training preparation, to prepare for a training and test set and experimentation
+    """
     def preTrain(self):
         Y = self.Corpus[self.config['labelName']]
 
@@ -69,6 +86,9 @@ class CofetEntry(object):
         self.Train_Y = self.Train_Y.astype(int)
         self.Test_Y = self.Test_Y.astype(int)
 
+    """
+    select classifier
+    """
     def clf(self):
         self.preTrain()
         if self.config['clf'] == 'nb_clf': 
@@ -80,5 +100,8 @@ class CofetEntry(object):
         if self.config['clf'] == 'lr_clf': 
             ModelSelector.lr_clf(self)
 
+    """
+    evaluate prediction performance against test set
+    """
     def elv(self):
         Evaluator.evl(self)

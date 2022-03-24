@@ -31,6 +31,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import GridSearchCV
 
 class ModelSelector(object):
+
+    """
+    a sample grid search run to find parameter for SVM 
+    """
     def svm_clf_grid(self):
         SVM = svm.SVC()
         parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]} 
@@ -53,6 +57,9 @@ class ModelSelector(object):
         # max_iter=-1, probability=False, random_state=None, shrinking=True,
         # tol=0.001, verbose=False)
     
+    """
+    a sample grid search run to find parameter for random forest 
+    """
     def rf_clf_grid(self):
         rfc=RandomForestClassifier()
         parameters = {
@@ -73,7 +80,10 @@ class ModelSelector(object):
         #     min_samples_split=4, min_weight_fraction_leaf=0.0,
         #     n_estimators=250, n_jobs=1, oob_score=False, random_state=None,
         #     verbose=0, warm_start=False)
-    
+
+    """
+    a sample grid search run to find parameter for logistic regression
+    """
     def lr_clf_grid(self):
         lrc=LogisticRegression()
         parameters = {
@@ -92,6 +102,9 @@ class ModelSelector(object):
         #   multi_class='ovr', n_jobs=1, penalty='l1', random_state=None,
         #   solver='liblinear', tol=0.0001, verbose=0, warm_start=False)
 
+    """
+    naive bayes classifier 
+    """
     def nb_clf(self):
         GaussianNaive = naive_bayes.GaussianNB()
         GaussianNaive.fit(self.Train_X,self.Train_Y)
@@ -100,6 +113,9 @@ class ModelSelector(object):
         self.predicted = GaussianNaive.predict(self.Test_X)
         self.predicted_prob = GaussianNaive.predict_proba(self.Test_X)
 
+    """
+    SVM classifier 
+    """
     def svm_clf(self):
         SVM = svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto')
         SVM.fit(self.Train_X, self.Train_Y)      
@@ -108,12 +124,18 @@ class ModelSelector(object):
         self.predicted_prob = SVM.predict_proba(self.Test_X)
 
 
+    """
+    Random forest classifier 
+    """
     def rf_clf(self):
         rfc=RandomForestClassifier(n_estimators=100)
         rfc.fit(self.Train_X,self.Train_Y)
         self.predicted = rfc.predict(self.Test_X)
         self.predicted_prob = rfc.predict_proba(self.Test_X)
 
+    """
+    Logistic regression classifier 
+    """
     def lr_clf(self):
         lrc=LogisticRegression(random_state=0)
         lrc.fit(self.Train_X,self.Train_Y)

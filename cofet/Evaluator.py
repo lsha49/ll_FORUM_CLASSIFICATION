@@ -31,6 +31,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 class Evaluator(object):
 
+    """
+    print out prediction performance results in terms of four commonly used metrics: accuracy, Kappa, ROC, F1
+    """
     def evl(self):
         predicted = self.predicted 
         predicted_prob = self.predicted_prob #for multi class AUC
